@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Food Bot</title>
+		<meta charset="utf-8" />
+  		<meta name="author" content="Isaac Paschall">
+		<meta property="og:title" content="Food Bot Technology" />
+		<meta name="apple-itunes-app" content="app-id=6444194042">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="shortcut icon" type="image/x-icon" href="images/foodbotlogonogb.ico" />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	</head>
+	<body class="container" id="background">
+
+		<!-- HEADER -->
+		<header id="header">
+			<span class="logo"><img src="images/foodbotlogonogb.svg" class="filter-white" /></span>
+			<h1><a href="https://apps.apple.com/us/app/food-bot-survey-filler/id6444194042" style="text-decoration: none; color: whitesmoke;" target="_blank">Food Bot</a></h1>
+			<p>Restaurant Survey Filler<br />
+			for iOS</p>
+		</header>
+
+		<!-- MAIN CONTENT -->
+		<div class="content">
+			<nav class="topnav">
+				<ul>
+					<li><a href="index">Home</a></li>
+					<li><a href="technology" class="selected">Technology</a></li>
+					<li><a href="privacy">Privacy</a></li>
+				</ul>
+			</nav>
+            <div class="horizontalscrollnav">
+				<a href="#swiftui">SwiftUI</a>
+				<a href="#uikit">UIKit</a>
+				<a href="#cloudkit">CloudKit</a>
+				<a href="#coredata">Core Data</a>
+				<a href="#notifications">Notifications</a>
+                <a href="#pdfkit">PDFKit</a>
+                <a href="#webview">WebKit</a>
+				<a href="#coretransferable">Core Transferable</a>
+			</div>
+			
+			<!--SwiftUI-->
+			<div class="point" id="swiftui">
+				<h2>SwiftUI</h2>
+				<span><img src="images/SwiftUI.png" alt="SwiftUI" /></span>
+				<p><a href="https://developer.apple.com/xcode/swiftui/" target="_blank">SwiftUI</a> is Apple's declaritive UI framework and its used all throughout Food Bot. Food Bot is built on SwiftUI and requires much less code than its UI counterpart, UIKit. SwiftUI aslo made it much easier to target multiple apps in the same project.</p>
+			</div>
+
+			<!--UIKit-->
+			<div class="point" id="uikit">
+				<h2>UIKit</h2>
+				<span><img src="images/UIKit.png" alt="UIKit" /></span>
+				<p><a href="https://developer.apple.com/documentation/uikit" target="_blank">UIKit</a> is Apple's imperative UI framework that offers much greater support for legacy features due to its longer life compared to the newer SwiftUI. UIKit was used many times throughout Food Bot to 
+                    enable features such as WKWebView and PDFKit.</p>
+			</div>
+
+			<!--CloudKit-->
+			<div class="point" id="cloudkit">
+				<h2>Cloudkit</h2>
+				<span><img src="images/CloudKit.png" alt="CloudKit" /></span>
+				<p><a href="https://developer.apple.com/icloud/cloudkit/" target="_blank">Cloudkit</a> is Apple's BAS (backend as a service) framework that manages all of Food Bot's backend. Food Bot uses Cloudkit for managing restaurants and notifications. Each restaurant is set up in an SDUI fashion. This allows for dynamic changes in Food Bot restaurants without an app update. Through modifying cloudkit restaurant records: the layout, number of text fields, regex for camera scanning text, or the javascript logic for filling the survey can all be changed on the fly.
+            </div>
+            
+            <!--CoreData-->
+			<div class="point" id="coredata">
+				<h2>Core Data</h2>
+				<span><img src="images/CoreData.png" alt="CoreData" /></span>
+				<p><a href="https://developer.apple.com/documentation/coredata" target="_blank">CoreData</a> is Apple's device storage framework that is used as the backbone of Food Bot when it comes to managing data. Food Bot saves all surveys completed and the entire persistant store is backed up in a private cloudkit container where it can be synced across devices.</p>
+			</div>
+
+            <!--Notifications-->
+			<div class="point" id="notifications">
+				<h2>Notifications</h2>
+				<span><img src="images/Notifications.png" alt="Notifications" /></span>
+				<p>Food Bot subscribes to changes in a certain database in CloudKit and handles those notifications with the use of an extension, <a href="https://developer.apple.com/documentation/usernotifications/unnotificationserviceextension" target="_blank">UNNotificationServiceExtension</a>. The service extension acts first when a notification is recieved, it parses the data sent (data is sent with a mutable flag) and finds the correct ids it needs to fetch more data such as images or text and when it's ready, notifies the user.</p>
+			</div>
+
+			<!--PDFKit-->
+			<div class="point" id="pdfkit">
+				<h2>PDFKit</h2>
+				<span><img src="images/pdfkit.png" alt="PDFKit" /></span>
+				<p><a href="https://developer.apple.com/documentation/pdfkit" target="_blank">PDFKit</a> is Apple's API for integrating pdf's into your app. This is important in Food Bot to display survey confirmation pages to the user. PDF's were a much better decision for Food Bot as oppose to images due to their smaller size and ability to select text or links.</p>
+			</div>
+
+            <!--WebKit-->
+			<div class="point" id="webkit">
+				<h2>WebKit</h2>
+				<span><img src="images/webview.png" alt="WebKit" /></span>
+				<p><a href="https://developer.apple.com/documentation/webkit" target="_blank">WebKit</a> is Apple's API for integrating websites into your app. This is integral for Food Bot's purpose of completing online surveys. This is all done through a WKWebView by injecting javascript into each webpage that fills each survey. The javascript can then communicate back to the WKWebView to relay information such as the progress of the survey, if the survey failed or if it succeeds.</p>
+			</div>
+
+            <!--Core Transferable-->
+			<div class="point" id="coretransferable">
+				<h2>Core Transferable</h2>
+				<span><img src="images/CoreTransferrable.png" alt="Core Transferable" /></span>
+				<p><a href="https://developer.apple.com/documentation/coretransferable" target="_blank">Core Transferable</a> is Apple's api for drap and drop related functions. Food Bot uses Core Transferable in devices running IOS 16 or above. Press and hold on any survey in History tab and it will become draggable to any location outside the app. When they are dropped the PDF is transferred to the new location.</p>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<h2>Contact Me</h2>
+			<p>
+				Email Me: <a href="mailto: iwp2358@gmail.com">iwp2358@gmail.com</a></dt>
+				<br/><br/>
+				Personal Website: <a href="https://isaacpasc.github.io" target="_blank">isaacpasc.github.io</a>
+			</p>
+		</footer>
+	</body>
+</html>
